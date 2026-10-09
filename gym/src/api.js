@@ -1,7 +1,9 @@
 // Todas las llamadas a la API pasan por aquí.
 // La API siempre responde { success, message, data }; devolvemos solo "data".
 
-const BASE_URL = '/api'
+// URL de la API desde la variable de entorno VITE_API_URL (p. ej. en Vercel).
+// Sin ella se usa "/api", que en desarrollo el proxy de Vite manda a localhost:8080.
+const BASE_URL = (import.meta.env.VITE_API_URL || '/api').replace(/\/+$/, '')
 
 // ---------- Sesión (se guarda en localStorage) ----------
 
